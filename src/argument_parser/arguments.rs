@@ -9,7 +9,15 @@ pub struct Args {
 #[derive(Subcommand)]
 pub enum Commands {
     Show,
-    Add,
-    Remove,
-    CheckOff,
+    #[command(arg_required_else_help = true)]
+    Add {
+        description: String,
+    },
+    #[command(arg_required_else_help = true)]
+    Remove {
+        todo_id: i32,
+    },
+    CheckOff {
+        todo_id: i32,
+    },
 }
